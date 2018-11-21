@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1"
+        name="viewport">
+  <meta content="ie=edge"
+        http-equiv="X-UA-Compatible">
+  <title>Kastle Synth</title>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Kreon');
+
+  :root {
+    --width-content: 80%;
+    --heigth-header: 70px;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    background-color: #ffff79;
+    font-family: 'Kreon', serif;
+  }
+
+  .layout {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  #header {  
+    position: fixed;
+    top: 0;
+    width: var(--width-content);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    background-color: #ffff79;
+    min-height: var(--heigth-header);
+    max-height: 150px;
+    z-index: 200;
+  }
+
+  main {
+    padding-top: var(--heigth-header);
+  }
+
+  #header #logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #header #header-img {
+    width: 64px;
+  }
+
+  #header h1 {
+    font-size: 38px;
+    white-space: nowrap;
+  }
+
+  .nav {
+    min-width: 50%;
+  }
+
+
+  .nav ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    
+  }
+
+  .nav ul a {
+    text-decoration: none;
+    color: black;
+    white-space: nowrap;
+    padding: 0 10px 0 10px;
+  }
+
+  .nav--bar ul a {
+    font-size: 24px;
+  }
+
+  #form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #form #email {
+    border: 2px solid #000000;
+    height: 60px;
+    max-width: 220px;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  #form #submit, .card__btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000000;
+    padding: 10px 50px;
+    background-color: #ffff79;
+  }
+
+  .features {
+    width: 65%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 15px 0;
+  }
+
+  .features__item {
+    max-width: 500px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+  }
+
+  .features__item .item__text h3, p {
+    text-align: center;
+  }
+
+  #how-it-works {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 45px 0;
+  }
+
+
+
+  .pricing {
+    max-width: 65%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+
+  .pricing__card {
+    max-width: 230px;
+    min-width: 230px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid #000000;
+    padding: 35px;
+    margin: 10px;
+  }
+
+  .pricing__card h3 {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .pricing__card h3 {
+    padding: 8px 0;
+  }
+
+  .pricing__card p {
+    padding: 15px 0;
+  }
+
+  footer {
+    margin-top: 30px;
+    background-color: #ffff13;
+    padding: 10px 20px;
+  }
+
+  .nav--footer {
+    display: inline;
+    font-size: 18px;
+    font-weight: normal;
+    text-align: right;
+  }
+
+  .nav--footer ul{
+    justify-content: flex-end;
+  }
+
+  .nav--footer ul li {
+    margin-left: 45px;
+  }
+
+  .nav--footer ul li:first-child {
+    margin-left: 0;
+  }
+
+  footer .copyright {
+    text-align: right;
+    font-size: 14px;
+    padding: 15px 0 0 15px;
+  }
+
+  @media screen and (max-width: 950px) {
+    #header {
+      flex-direction: column;
+    }
+    main {
+      padding-top: 94px;
+    }
+    .features {
+      max-height: auto;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+    }
+    .pricing {
+      max-height: auto;
+      flex-direction: column;
+      align-items: center;
+      
+    }
+
+  }
+
+  @media screen and (max-width: 600px) {
+    .youtubeContainer {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; 
+      height: 0;
+    }
+    
+    .youtubeContainer iframe, .youtubeContainer object, .youtubeContainer embed {
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    } 
+  }
+
+  @media screen and (max-width: 430px) {
+    .nav--footer ul li {
+      margin-left: 20px;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    .nav--footer ul li {
+      margin-left: 5px;
+    }
+    .nav--bar ul{
+      flex-direction: column;
+    }
+    main {
+      padding-top: 150px;
+    }
+    #header h1 {
+      font-size: 35px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="layout">
+    <header id="header">
+      <div id="logo">
+        <img alt="SYNTH"
+             id="header-img"
+             src="./logo.png">
+        <h1>BASTLE KASTLE</h1>
+      </div>
+      <nav class="nav nav--bar"
+           id="nav-bar">
+        <ul>
+          <li>
+            <a class="nav-link"
+                href="#features">Features</a>
+          </li>
+          <li>
+            <a class="nav-link"
+                href="#how-it-works">How It Works</a>
+          </li>
+          <li>
+            <a class="nav-link"
+                href="#pricing">Pricing</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+  <div class="layout">
+    <main>
+      <section id="contact">
+        <form action="https://www.freecodecamp.com/email-submit"
+              id="form"
+              name="form">
+          <input id="email"
+                name="email"
+                placeholder="Enter your email addres"
+                type="email"> <input id="submit"
+                type="submit"
+                value="Get Started">
+        </form>
+      </section>
+      <section class="features"
+               id="features">
+        <div class="features__item">
+          <img alt=""
+               src="./pocket.png">
+          <div class="item__text">
+            <h3>Pocket!</h3>
+            <p>It delivers the fun of modular synthesis at cost and fits into your pocket so you can play it everywhere!</p>
+          </div>
+        </div>
+        <div class="features__item">
+          <img alt=""
+               src="./sound.png">
+          <div class="item__text">
+            <h3>Unique sound!</h3>
+            <p>It has unique digital lo-fi sound and it can be melodic as well as very noisy and drony, soft or harsh</p>
+          </div>
+        </div>
+        <div class="features__item">
+          <img alt=""
+               src="./plate.png">
+          <div class="item__text">
+            <h3>Open source!</h3>
+            <p>Kastle is an open source DIY project which runs on two Attiny 85 chips that can be reprogrammed with an Arduino</p>
+          </div>
+        </div>
+      </section>
+      <section id="how-it-works">
+        <div class="youtubeContainer">
+          <iframe allow="autoplay; encrypted-media"
+               allowfullscreen
+               frameborder="0"
+               height="315"
+               id="video"
+               name="video"
+               src="https://www.youtube.com/embed/F6oV6-shZpI?rel=0&amp;controls=0"
+               width="560"></iframe>
+        </div>
+      </section>
+      <section class="pricing"
+               id="pricing">
+        <div class="pricing__card">
+          <h3>KASTLE V1.5</h3>
+          <h4>&euro;80.00</h4>
+          <p>The v1.5 version combines complex oscillator and LFO with stepped waveform generator.</p><button class="card__btn">SELECT</button>
+        </div>
+        <div class="pricing__card">
+          <h3>KASTLE DIY KIT</h3>
+          <h4>&euro;67.00</h4>
+          <p>This is the KIT version</p><button class="card__btn">SELECT</button>
+        </div>
+        <div class="pricing__card">
+          <h3>SET OF JUMPER WIRES</h3>
+          <h4>&euro;6.00</h4>
+          <p>Set of 65 jumper cables of various lengths is compatible.</p><button class="card__btn">SELECT</button>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="layout">
+    <footer>
+      <nav class="nav nav--footer">
+        <ul>
+          <li>
+            <a href="#">Privacy</a>
+          </li>
+          <li>
+            <a href="#">Terms</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </nav>
+      <p class="copyright">None-Copyright 2018, BASTLE KASTLE</p>
+    </footer>
+  </div><!--script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script-->
+</body>
+</html>

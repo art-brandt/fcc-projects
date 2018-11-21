@@ -1,0 +1,40 @@
+{
+  "sections": [
+    { 
+      "name": "Responsive Web Design",
+      "folder": "responsive-web-design",
+      "projects": [
+        {
+          "name": "Tribute Page",
+          "folder": "tribute-page"
+        }, 
+        {
+          "name": "Survey Form",
+          "folder": "survey-form"
+        }, 
+        {
+          "name": "Product Landing Page",
+          "folder": "landing"
+        }, 
+        {
+          "name": "Technical Documentation Page",
+          "folder": "tech-doc-page"
+        }, 
+        {
+          "name": "Personal Portfolio Page",
+          "folder": "portfolio-page"
+        }
+      ] 
+    },
+    { 
+      "name": "Front-end libraries",
+      "folder": "front-end-libraries", 
+      "projects": [
+        {
+          "name": "Random Quote Machine",
+          "folder":"random-quote-machine"
+        }
+      ] 
+    }
+  ]
+}

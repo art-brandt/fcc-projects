@@ -1,0 +1,19 @@
+{
+  "name": "fcc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd front-end-libraries/random-quote-machine && npm install --only=dev && npm install && npm run build"
+  },
+  "author": "",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "engines": {
+    "node": "8.13.0",
+    "npm": "6.4.1"
+  }
+}
