@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./style.css">
+  <style>
+    @media screen and (max-width: 730px){
+      #projects {
+        grid-template-columns: repeat(1, 320px);
+        grid-gap: 30px;
+      }
+      #projects .project-tile {
+        grid-column: 1/2
+      }
+      #projects header {
+        grid-column: 1/2
+      }
+    }
+  </style>
   <title>Personal Portfolio</title>
 </head>
 <body>
@@ -22,39 +36,37 @@
   </section>
   <section id="projects">
     <header><h2>Projects</h2></header>
-    <div class="projectWarp">
-    <div class="projects-tile">
+    <div class="project-tile">
       <a href="#"><img alt="" src="./img/tribute.jpg"></a>
       <a href="#"><h3>Tribute Page (FCC)</h3></a>
     </div>
-    <div class="projects-tile">
+    <div class="project-tile">
       <a href="#"><img alt="" src="./img/form.jpg"></a>
       <a href="#"><h3>Survey Form (FCC)</h3></a>
     </div>
-    <div class="projects-tile">
+    <div class="project-tile">
       <a href="#"><img alt="" src="./img/landing.jpg"></a>
       <a href="#"><h3>Landing (FCC)</h3></a>
     </div>
-    <div class="projects-tile">
+    <div class="project-tile">
       <a href="#"><img alt="" src="./img/doc.jpg"></a>
       <a href="#"><h3>Technical Documentation (FCC)</h3></a>
     </div>
-    <div class="projects-tile">
+    <div class="project-tile">
       <a href="#"><img alt="" src="./img/random-quote.jpg"></a>
       <a href="#"><h3>Random Quote Machine (FCC)</h3></a>
     </div>
-    </div>
-
     <div class="button button--more"></div>
   </section>
   <section id="contact">
-    <header><h2>Let's work together...</h2></header>
-    <p>OK?</p>
-    <div id="profile-link">
-      <a href="#"><div class="profile-link__item"><img src="./img/github.png" alt="GitHub"/></div></a>
-      <a href="#"><div class="profile-link__item"><img src="./img/fb.png" alt="FB" /></div></a>
-      <a href="#"><div class="profile-link__item"><img src="./img/vk.png" alt="VK" /></div></a>
-      <a href="#"><div class="profile-link__item"><img src="./img/mail.png" alt="Mail" /></div></a>
+    <header>
+      <h2>Let's work together...</h2>
+      <p>OK?</p>
+    </header>
+    <div id="profile">
+      <a href="https://github.com/art-brandt" target="_blank" id="profile-link"><div class="profile-link"><img src="./img/github.png" alt="GitHub"/></div></a>
+      <a href="https://vk.com/id10766307" target="_blank"><div class="profile-link"><img src="./img/vk.png" alt="VK" /></div></a>
+      <a href="#"><div class="profile-link"><img src="./img/mail.png" alt="Mail" /></div></a>
     </div>
   </section>
   </main>
@@ -62,5 +74,6 @@
     <p>&copy; Mikhail Panteleev. e-mail: mihail.panteleyev@gmail.com</p>
     <p>It's fake portfolio</p>
   </footer>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
 </html>
