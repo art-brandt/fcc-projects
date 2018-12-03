@@ -7,11 +7,11 @@ module.exports = {
     entry: './src/index.jsx',
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'dist'),
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './build',
+        contentBase: './dist',
         overlay: true,
     },
     module: {

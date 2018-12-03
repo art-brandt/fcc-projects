@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 
 projects.sections.forEach(section => {
   section.projects.forEach(project => {
-    if (section.folder !== "front-end-libraries") {
+    if (!project.build) {
       app.use(`/${project.folder}`, express.static(path.join(__dirname, section.folder, project.folder)));
       app.get(`/${project.folder}`, (req, res) => {
         res.sendfile(path.join(__dirname, section.folder, project.folder, "index.html"));
@@ -23,7 +23,7 @@ projects.sections.forEach(section => {
     } else {
       app.use(`/${project.folder}`,express.static(path.join(__dirname, section.folder, project.folder, "dist")));
       app.get(`/${project.folder}`, (req, res) => {
-        res.sendfile(path.join(__dirname, section.folder, project.folder, "index.html"));
+        res.sendfile(path.join(__dirname, section.folder, project.folder, "dist" ,"index.html"));
       });
     }
   });

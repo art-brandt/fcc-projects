@@ -32,7 +32,13 @@
       "projects": [
         {
           "name": "Random Quote Machine",
-          "folder":"random-quote-machine"
+          "folder":"random-quote-machine",
+          "build": true
+        },
+        {
+          "name": "Markdown Previewer",
+          "folder":"markdown-previewer",
+          "build": true
         }
       ] 
     }
