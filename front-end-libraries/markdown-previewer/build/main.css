@@ -1,6 +1,6 @@
 .container {
   width: 100 wh;
-  heigth: 100 wh;
+  height: 100 wh;
   display: flex;
   flex-direction: row;
   background-color: #424d5e; }
