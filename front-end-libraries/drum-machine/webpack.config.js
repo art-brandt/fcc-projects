@@ -54,6 +54,18 @@ module.exports = {
                         presets: ['@babel/preset-react']
                     }
                 }
+            },
+            {
+                test: /\.ogg$/,
+                use: [
+                    {
+                    loader:'file-loader',
+                    options: {
+                            name: '[name].[ext]',
+                            outputPath: './clips',
+                            publicPath: './clips'
+                    }
+                }]   
             }
         ]
     },
