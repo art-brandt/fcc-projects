@@ -39,6 +39,11 @@
           "name": "Markdown Previewer",
           "folder":"markdown-previewer",
           "build": true
+        },
+        {
+          "name": "Drum Machine",
+          "folder":"drum-machine",
+          "build": true
         }
       ] 
     }

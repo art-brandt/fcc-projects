@@ -1,11 +1,24 @@
 const gulp = require("gulp");
-const shell = require('gulp-shell');
+const {sh} = require('sh-thunk');
 const fs = require('fs');
+const path = require('path');
 
 const projectsFixture = fs.readFileSync(path.join(__dirname, "projectsFixture.json"));
-const projects = JSON.parse(projectsFixture);
+const fixtures = JSON.parse(projectsFixture);
 
-gulp.task('webpack-build', shell.task(
-  `cd ${folder}/${project} && npm install --only=dev && npm install && npm run build`
-));
+let buildingProjects = fixtures.sections.map((item) => {
+  let folder = item.folder
+  return item.projects.map(project => { 
+    project.section = folder;
+    return project 
+  });
+}).reduce((accum, val) => { 
+  return accum.concat(val) 
+}, []).filter(obj => { 
+  return obj.build === true 
+}); // { name : string, folder : string, build: boolen, section: string }
+
+console.log(buildingProjects )
+
+gulp.task('webpack-build', sh(`cd ${buildingProjects[1].section}`));
 
