@@ -1,0 +1,20 @@
+#display {
+  width: 615px;
+  height: 80px;
+  background-color: rgb(255, 172, 71);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 3px solid rgb(129, 138, 129);
+  box-shadow: inset 10px 10px 116px 0px  rgb(221, 149, 61);
+  font-family: 'Press Start 2P', cursive;
+  color: rgb(61, 34, 0);
+  font-size: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  span {
+    margin-left: 20px;
+    text-shadow: 0 0 10px rgb(252, 185, 102);
+    user-select: none;
+  }
+}

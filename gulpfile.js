@@ -1,11 +1,42 @@
 const gulp = require("gulp");
-const shell = require('gulp-shell');
+const {sh} = require('sh-thunk');
 const fs = require('fs');
+const path = require('path');
 
 const projectsFixture = fs.readFileSync(path.join(__dirname, "projectsFixture.json"));
-const projects = JSON.parse(projectsFixture);
+const fixtures = JSON.parse(projectsFixture);
 
-gulp.task('webpack-build', shell.task(
-  `cd ${folder}/${project} && npm install --only=dev && npm install && npm run build`
+let prjsForBuild = fixtures.sections.map((section) => {
+  let sectionFolder = section.folder
+  return section.projects.map(project => { 
+    project.path = `./${sectionFolder}/${project.folder}/`;
+    project.name = project.folder;
+    delete project.folder;
+    return project;
+  });
+}).reduce((accum, val) => {
+  return accum.concat(val) 
+}, []).filter(obj => {
+  return obj.build === true;
+}).map(item => {
+  delete item.build;
+  return item;
+}); // { name : string, path: string }
+
+prjsForBuild.forEach(project => {
+  gulp.task('build:' + project.name, sh(`cd ${project.path} && npm run build`));
+  gulp.task('heroku-postbuild:' + project.name, 
+    sh(`cd ${project.path} && npm install && npm run build`
+  ));
+});
+
+gulp.task('build:all', gulp.series(
+    prjsForBuild.map(project => { return 'build:'+ project.name })
 ));
+
+gulp.task('heroku-postbuild:all', gulp.series(
+  prjsForBuild.map(project => { return 'heroku-postbuild:'+ project.name })
+));
+
+
 

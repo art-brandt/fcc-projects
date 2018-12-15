@@ -1,5 +1,5 @@
 {
-  "name": "markdown-prewiever",
+  "name": "drum-machine",
   "version": "0.1.0",
   "description": "",
   "private": true,
@@ -21,7 +21,7 @@
     "file-loader": "^2.0.0",
     "html-loader": "^0.5.5",
     "mini-css-extract-plugin": "^0.4.4",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "svg-inline-loader": "^0.8.0",
@@ -30,7 +30,6 @@
     "webpack-dev-server": "^3.1.8"
   },
   "dependencies": {
-    "marked": "^0.5.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   }
