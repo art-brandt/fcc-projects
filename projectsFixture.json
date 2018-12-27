@@ -44,6 +44,11 @@
           "name": "Drum Machine",
           "folder":"drum-machine",
           "build": true
+        },
+        {
+          "name": "Calculator",
+          "folder":"calculator",
+          "build": true
         }
       ] 
     }

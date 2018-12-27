@@ -1,0 +1,12 @@
+.calculator__display {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  grid-area: 1 / 1 / 2 / 5;
+  flex-direction: column;
+  p {
+    text-align: right;
+    height: 50%;
+  }
+}
+
