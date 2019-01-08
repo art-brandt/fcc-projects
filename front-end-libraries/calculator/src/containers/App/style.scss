@@ -5,6 +5,10 @@
 }
 
 #App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:rgb(79, 91, 94);
   width: 100vw;
   height: 100vh;
 }
@@ -18,6 +22,12 @@
   width: 350px;
   height: 450px;
   background-color:rgb(50, 50, 50);
+  padding: 5px 5px;
+  border: 2px solid rgb(34, 34, 34);
+  .calculator__btn {
+    border: none;
+    font-size: 24px;
+  }
 }
 
 $buttons-bgcolors: (
@@ -45,3 +55,6 @@ $buttons-bgcolors: (
     background-color: $bgcolors;
   } 
 }
+
+
+

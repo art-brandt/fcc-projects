@@ -46,12 +46,21 @@ module.exports = {
                 use: ['html-loader']
             },
             {
-                test: /\.m?(js|jsx)$/,
+                test: /\.m?jsx$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-react']
+                    }
+                }
+            },
+            {
+                test: /\.js$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
                     }
                 }
             }
