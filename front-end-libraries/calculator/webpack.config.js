@@ -1,15 +1,13 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-
-module.exports = {
+const config = {
     mode: 'development',
     entry: './src/index.jsx',
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
         overlay: true,
@@ -71,5 +69,20 @@ module.exports = {
             filename: "[name].css",
             chunkFilename: "[id].css"
         })
-    ],
+    ]
+}
+
+module.exports = (env, argv) => {
+    if (argv.mode === 'development') {
+        config.mode = 'development';
+        config.devtool = 'inline-source-map';
+    } else if (argv.mode === 'production') {
+        /*config.mode = 'production';
+        config.optimization = {
+            splitChunks: {
+                chunks: 'all'
+            }
+        }*/
+    }
+    return config;
 };
