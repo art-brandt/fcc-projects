@@ -1,0 +1,22 @@
+.calculator__display {
+  font-family: 'Share Tech Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  grid-area: 1 / 1 / 2 / 5;
+  flex-direction: column;
+  background-color: rgb(70, 70, 70);
+  margin-bottom: 5px;
+  p {
+    text-align: right;
+    height: 50%;
+  }
+  p:nth-child(1) {
+    font-size: 30px;
+    color: rgb(255, 255, 0);
+  }
+  p:nth-child(2) {
+    font-size: 26px;
+  }
+}
+

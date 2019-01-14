@@ -1,0 +1,61 @@
+@import '../../../node_modules/normalize.css/normalize.css';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:rgb(79, 91, 94);
+  width: 100vw;
+  height: 100vh;
+}
+
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-gap: 2px;
+  color: rgb(255, 255, 255);
+  width: 350px;
+  height: 450px;
+  background-color:rgb(50, 50, 50);
+  padding: 5px 5px;
+  border: 2px solid rgb(34, 34, 34);
+  .calculator__btn {
+    border: none;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    &:hover {
+      border: 2px solid rgba(255, 255, 0, 0.4);
+    }
+    &--number {
+      background-color: rgb(100, 100, 100);
+    }
+    &--operation {
+      background-color: rgb(130, 130, 130);
+    }
+    &--clear {
+      background-color: rgb(220, 40, 40);
+    }
+    &--equals {
+      background-color: rgb(40, 100, 220);
+      grid-area: 5 / 4 / 7 / 5;
+    }
+  }
+  #add {
+    grid-area: 3 / 4 / 5 / 5;
+  }
+  #zero {
+    grid-area: 6 / 1 / 6 / 3;
+  }
+
+}
+
+
+
+
