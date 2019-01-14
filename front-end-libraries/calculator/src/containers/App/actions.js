@@ -1,4 +1,4 @@
-import { ENTRY_OPERATOR, EQUALS, CLEARE, ENTRY_NUMBER, ENTRY_DECIMAL} from './constants';
+import { ENTRY_OPERATOR, EQUALS, CLEAR, ENTRY_NUMBER, ENTRY_DECIMAL} from './constants';
 
 export function entryNumber(number) {
   return { type: ENTRY_NUMBER, number };
@@ -16,6 +16,6 @@ export function equals() {
   return { type: EQUALS };
 }
 
-export function cleare() {
-  return { type: CLEARE };
+export function clear() {
+  return { type: CLEAR };
 }

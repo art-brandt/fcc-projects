@@ -1,3 +1,5 @@
+@import '../../../node_modules/normalize.css/normalize.css';
+
 * {
   padding: 0;
   margin: 0;
@@ -27,34 +29,33 @@
   .calculator__btn {
     border: none;
     font-size: 24px;
+    color: rgb(0, 0, 0);
+    &:hover {
+      border: 2px solid rgba(255, 255, 0, 0.4);
+    }
+    &--number {
+      background-color: rgb(100, 100, 100);
+    }
+    &--operation {
+      background-color: rgb(130, 130, 130);
+    }
+    &--clear {
+      background-color: rgb(220, 40, 40);
+    }
+    &--equals {
+      background-color: rgb(40, 100, 220);
+      grid-area: 5 / 4 / 7 / 5;
+    }
   }
+  #add {
+    grid-area: 3 / 4 / 5 / 5;
+  }
+  #zero {
+    grid-area: 6 / 1 / 6 / 3;
+  }
+
 }
 
-$buttons-bgcolors: (
-  one:rgb(100, 100, 100),
-  two:rgb(100, 100, 100),
-  three:rgb(100, 100, 100),
-  four:rgb(100, 100, 100),
-  five:rgb(100, 100, 100),
-  six:rgb(100, 100, 100),
-  seven:rgb(100, 100, 100),
-  eigth:rgb(100, 100, 100),
-  nine:rgb(100, 100, 100),
-  zero:rgb(100, 100, 100),
-  equals:rgb(40, 100, 220),
-  clear:rgb(220, 40, 40),
-  add:rgb(130, 130, 130),
-  substract:rgb(130, 130, 130),
-  multiply:rgb(130, 130, 130),
-  decimal:rgb(130, 130, 130),
-  divide:rgb(130, 130, 130)
-);
-
-@each $id ,$bgcolors in $buttons-bgcolors {
-  ##{$id}{
-    background-color: $bgcolors;
-  } 
-}
 
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { entryNumber, cleare, entryOperator, entryDecimal, equals } from './actions';
+import { entryNumber, clear, entryOperator, entryDecimal, equals } from './actions';
 
 import './style.scss';
 
@@ -10,7 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.entryNumber = this.entryNumber.bind(this);
-    this.cleare = this.cleare.bind(this);
+    this.clear = this.clear.bind(this);
     this.entryOperator = this.entryOperator.bind(this);
     this.entryDecimal = this.entryDecimal.bind(this);
     this.equals = this.equals.bind(this);
@@ -20,8 +20,8 @@ class App extends Component {
     this.props.onEntrynumber(event.target.innerText);
   }
 
-  cleare() {
-    this.props.onCleare();
+  clear() {
+    this.props.onClear();
   }
 
   entryOperator(event) {
@@ -41,23 +41,74 @@ class App extends Component {
       <div className="calculator">
         <Display firstRow={this.props.expression} 
                  secondRow={this.props.entries}/>
-        <button className='calculator__btn' id="clear" onClick={this.cleare}>AC</button>
-        <button className='calculator__btn' id="equals" onClick={this.equals}>=</button>
-        <button className='calculator__btn' id="zero" onClick={this.entryNumber}>0</button>
-        <button className='calculator__btn' id="one" onClick={this.entryNumber}>1</button>
-        <button className='calculator__btn' id="two" onClick={this.entryNumber}>2</button>
-        <button className='calculator__btn' id="three" onClick={this.entryNumber}>3</button>
-        <button className='calculator__btn' id="four" onClick={this.entryNumber}>4</button>
-        <button className='calculator__btn' id="five" onClick={this.entryNumber}>5</button>
-        <button className='calculator__btn' id="six" onClick={this.entryNumber}>6</button>
-        <button className='calculator__btn' id="seven" onClick={this.entryNumber}>7</button>
-        <button className='calculator__btn' id="eigth" onClick={this.entryNumber}>8</button>
-        <button className='calculator__btn' id="nine" onClick={this.entryNumber}>9</button>
-        <button className='calculator__btn' id="add" onClick={this.entryOperator}>+</button>
-        <button className='calculator__btn' id="substract" onClick={this.entryOperator}>-</button>
-        <button className='calculator__btn' id="multiply" onClick={this.entryOperator}>*</button>
-        <button className='calculator__btn' id="divide" onClick={this.entryOperator}>/</button>
-        <button className='calculator__btn' id="decimal" onClick={this.entryDecimal}>.</button>
+        <button className='calculator__btn calculator__btn--clear' 
+                id="clear" 
+                onClick={this.clear}
+        >AC</button>
+        <button className='calculator__btn calculator__btn--operation'
+                id="divide"
+                onClick={this.entryOperator}
+        >/</button>
+        <button className='calculator__btn calculator__btn--operation'
+                id="multiply"
+                onClick={this.entryOperator}
+        >*</button>
+        <button className='calculator__btn calculator__btn--operation'
+                id="subtract"
+                onClick={this.entryOperator}
+        >-</button>
+        <button className='calculator__btn calculator__btn--number'
+                id="seven"
+                onClick={this.entryNumber}
+        >7</button>
+        <button className='calculator__btn calculator__btn--number'
+                id="eight"
+                onClick={this.entryNumber}
+        >8</button>
+        <button className='calculator__btn calculator__btn--number'
+                id="nine"
+                onClick={this.entryNumber}
+        >9</button>
+        <button className='calculator__btn calculator__btn--operation'
+                id="add"
+                onClick={this.entryOperator}
+        >+</button>
+        <button className='calculator__btn calculator__btn--number'
+                id="four"
+                onClick={this.entryNumber}
+        >4</button>
+        <button className='calculator__btn calculator__btn--number'
+                id="five"
+                onClick={this.entryNumber}
+        >5</button>
+        <button className='calculator__btn calculator__btn--number'
+                id="six"
+                onClick={this.entryNumber}
+        >6</button>
+        <button className='calculator__btn calculator__btn--number'
+                id="one"
+                onClick={this.entryNumber}
+        >1</button>
+        <button className='calculator__btn calculator__btn--number'
+                id="two"
+                onClick={this.entryNumber}
+        >2</button>
+        <button className='calculator__btn calculator__btn--number'
+                id="three"
+                onClick={this.entryNumber}
+        >3</button>
+        <button className='calculator__btn calculator__btn--equals'
+                id="equals"
+                onClick={this.equals}
+        >=</button>
+        <button className='calculator__btn calculator__btn--number'
+                id="zero"
+                onClick={this.entryNumber}
+        >0</button>
+        <button className='calculator__btn calculator__btn--operation'
+                id="decimal"
+                onClick={this.entryDecimal}
+        >.</button>
       </div>
     );
   }
@@ -65,15 +116,15 @@ class App extends Component {
 
 export default connect(
   state => ({
-    expression: state.display,
+    expression: state.expression,
     entries: state.entriesField,
   }),
   dispatch => ({
     onEntrynumber: (number) => {
       dispatch(entryNumber(number));
     },
-    onCleare: () => {
-      dispatch(cleare());
+    onClear: () => {
+      dispatch(clear());
     },
     onEntryOperator: (operator) => {
       dispatch(entryOperator(operator));

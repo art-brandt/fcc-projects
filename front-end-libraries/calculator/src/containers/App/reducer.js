@@ -1,12 +1,11 @@
-import { ENTRY_OPERATOR, EQUALS, CLEARE, ENTRY_NUMBER, ENTRY_DECIMAL} from './constants';
+import { ENTRY_OPERATOR, EQUALS, CLEAR, ENTRY_NUMBER, ENTRY_DECIMAL} from './constants';
 
 const initialState = {
-  display: '',
-  entriesField: '',
+  expression: '',
+  entriesField: '0',
+  entriesFieldIsInitial: true,
   entriesHaveOperator: false,
-  entriesIsNumber: false,
-  entriesEndHaveDecimal: false,
-  displayHaveResult: false,
+  expressionHaveResult: false,
   lastResult: null
 };
 
@@ -14,107 +13,81 @@ function appReducer(state = initialState, action) {
   const newState = {};
   Object.assign(newState, state);
 
-  let display = state.display;
+  let expression = state.expression;
   let entriesField = state.entriesField;
+
   let entriesHaveOperator = state.entriesHaveOperator;
-  let entriesEndHaveDecimal = state.entriesEndHaveDecimal;
-  let entriesIsNumber = state.entriesIsNumber;
-  let displayHaveResult = state.displayHaveResult;
+  let expressionHaveResult = state.expressionHaveResult;
   let lastResult = state.lastResult;
+  let entriesFieldIsInitial = state.entriesFieldIsInitial;
+  let entriesEndHaveDecimal = entriesField.includes('.');
 
   switch (action.type) {
     case ENTRY_NUMBER:
-      let number = action.number;
-
-      if (number !== '0' && !entriesHaveOperator) {
-        newState.display = display.concat(number);
-        newState.entriesField = entriesField.concat(number);
-        newState.entriesIsNumber = true;
-        newState.entriesHaveOperator = false;
-        newState.entriesEndHaveDecimal = false;
-        return newState;
-      } else if (number === '0' && entriesField !== '' && !entriesHaveOperator){
-        newState.display = display.concat(number);
-        newState.entriesField = entriesField.concat(number);
-        newState.entriesIsNumber = true;
-        newState.entriesHaveOperator = false;
-        newState.entriesEndHaveDecimal = false;
-        return newState;
-      } else if (entriesHaveOperator){
-        newState.display = display.concat(number);
+      const number = action.number;
+      let entriesFieldHaveZero = number === '0' && expression === '0' && entriesField === '0';
+      if (entriesFieldIsInitial) {
+        newState.expression = expression.concat(number);
         newState.entriesField = number;
-        newState.entriesIsNumber = true;
+        newState.entriesFieldIsInitial = false;
+      } else if (entriesHaveOperator && !entriesFieldHaveZero) {
+        newState.expression = expression.concat(number);
+        newState.entriesField = number;
         newState.entriesHaveOperator = false;
+      } else if (!expressionHaveResult && !entriesFieldHaveZero) {
+        newState.expression = expression.concat(number);
+        newState.entriesField = entriesField.concat(number);
         newState.entriesEndHaveDecimal = false;
+      } else if (entriesFieldHaveZero) {
         return newState;
-      } else {
-        return state;
       }
+      return newState;
     case ENTRY_OPERATOR:
-      let operator = action.operator;
-
-      if (!entriesHaveOperator && entriesField !== '' && !entriesEndHaveDecimal && !displayHaveResult) {
-        newState.display = display.concat(operator);
+      const operator = action.operator;
+      if (entriesFieldIsInitial && operator === '-') {
+        newState.expression = expression.concat(operator);
         newState.entriesField = operator;
         newState.entriesHaveOperator = true;
-        newState.entriesIsNumber = false;
-        return newState;
-      } else if (entriesEndHaveDecimal && !displayHaveResult) {
-        newState.display = display.concat(operator).replace('.', '');
+        newState.entriesFieldIsInitial = false;
+      } else if (!entriesHaveOperator && !expressionHaveResult) {
+        newState.expression = expression.concat(operator);
         newState.entriesField = operator;
         newState.entriesHaveOperator = true;
-        newState.entriesIsNumber = false;
-        return newState;
-      } else if (displayHaveResult) {
-        console.log(lastResult, operator);
-        newState.display = lastResult.concat(operator);
+      } else if (expressionHaveResult) {
+        newState.expression = lastResult.concat(operator);
         newState.entriesField = operator;
         newState.entriesHaveOperator = true;
-        newState.entriesIsNumber = false;
-        newState.displayHaveResult = false;
-        newState.lastResult = null;
-        return newState
-      } else {
-        return state;
-      };
-    case ENTRY_DECIMAL:
-      if (entriesIsNumber && !entriesEndHaveDecimal && !entriesHaveOperator) {
-        newState.display = display.concat('.');
-        newState.entriesField = entriesField.concat('.')
-        newState.entriesEndHaveDecimal = true;
-        return newState;
-      } else {
-        return state;
+        newState.expressionHaveResult = false;
+      } else if (entriesHaveOperator) {
+        const regExpOperator = /\+|\-|\*|\-/g
+        newState.expression = expression.replace(regExpOperator, operator);
+        newState.entriesField = operator;
       }
-    case CLEARE:
+      return newState;
+    case ENTRY_DECIMAL:
+      if (entriesFieldIsInitial) {
+        newState.expression = entriesField.concat('.');
+        newState.entriesField = entriesField.concat('.');
+        newState.entriesFieldIsInitial = false;
+      } else if (!entriesEndHaveDecimal && !expressionHaveResult) {
+        newState.expression = expression.concat('.');
+        newState.entriesField = entriesField.concat('.');
+      } else if (entriesEndHaveDecimal) {
+        return newState;
+      } else if (expressionHaveResult) {
+        newState.expression = lastResult.concat('.');
+        newState.entriesField = '.';
+        newState.expressionHaveResult = false;
+      }
+      return newState;
+    case CLEAR:
       return initialState;
     case EQUALS:
-      function doOperation(a, b, operation) {
-        switch(operation) {
-          case '+': return a + b;
-          case '-': return a - b;
-          case '*': return a * b;
-          case '/': return a / b;
-        }
-      }
-      const numbers = state.display.split(/\/|\*|\+|\-/).map(item => Number(item));;
-      const operators = state.display.split(/\d+/).filter(item => item !== '')
-      
-      do {
-        let result = doOperation(numbers[0], numbers[1], operators[0]);
-        for (let i = 0; i <= 1; i++) {
-          numbers.shift();
-        }
-        operators.shift();
-        numbers.unshift(result);
-
-      } while (operators.length > 0);
-
-      let [result] = numbers;
-
-      newState.display = display.concat(`=${result}`);
+      console.log(result);;
+      let result = eval(expression);
+      newState.expression = expression.concat(`=${result}`);
       newState.entriesField = result.toString();
-      newState.displayHaveResult = true;
+      newState.expressionHaveResult = true;
       newState.lastResult = result.toString();
       return newState;
     default:

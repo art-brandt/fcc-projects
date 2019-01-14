@@ -8,9 +8,9 @@ export default class Display extends Component {
   }
   render() {
     return (
-      <div className="calculator__display" id="display">
-        <p>{this.props.firstRow}</p>
-        <p>{this.props.secondRow}</p>
+      <div className="calculator__display">
+        <p id="result">{this.props.firstRow}</p>
+        <p id="display">{this.props.secondRow}</p>
       </div>
     );
 
