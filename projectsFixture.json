@@ -49,6 +49,11 @@
           "name": "Calculator",
           "folder":"calculator",
           "build": true
+        },
+        {
+          "name": "Pomodoro Clock",
+          "folder":"pomodoro-clock",
+          "build": true
         }
       ] 
     }

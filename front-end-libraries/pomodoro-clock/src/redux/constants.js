@@ -1,0 +1,10 @@
+export const BREAK_DECREMENT = 'BREAK_DECREMENT';
+export const BREAK_INCREMENT = 'BREAK_INCREMENT';
+export const SESSION_DECREMENT = 'SESSION_DECREMENT';
+export const SESSION_INCREMENT = 'SESSION_INCREMENT';
+export const START_TIMER = 'START_TIMER';
+export const STOP_TIMER = 'STOP_TIMER';
+export const TICK = 'TICK';
+export const RESET = 'RESET';
+export const SWITCH_TIMER_MODE = 'SWITCH_TIMER_MODE';
+
