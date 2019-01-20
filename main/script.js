@@ -15,10 +15,10 @@ class Section {
     this.projectListOfSection = () => {
       const items = this.projects.map(project => {
         const li = document.createElement('li');
-        li.className = "section__item";
+        li.className = "section__item list-group-item";
         const link = document.createElement('a');
         link.href = `./${project.folder}`;
-        link.innerText = project.name;
+        link.innerHTML = `<h3>${project.name}</h3>`;
         li.appendChild(link);
         return li;
       });
@@ -27,8 +27,8 @@ class Section {
         ul.appendChild(item);
       });
       const section = document.createElement('li');
-      section.className = "projects__section";
-      section.innerText = this.section.name;
+      section.className = "projects__section list-group col-6";
+      section.innerHTML = `<h2>${this.section.name}</h2>`;
       section.appendChild(ul);
       return section;
     }
