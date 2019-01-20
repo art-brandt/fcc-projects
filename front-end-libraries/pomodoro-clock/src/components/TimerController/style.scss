@@ -1,0 +1,30 @@
+.timer-controller {
+  display: flex;
+}
+
+.timer-controller__start-stop, .timer-controller__reset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  margin: 0px 5px;
+  cursor: pointer;
+
+  svg {
+    height: 20px;
+    path {
+      fill: rgb(78, 82, 124);
+    }
+  }
+}
+
+.timer-controller__start-stop:hover, .timer-controller__reset:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.timer-controller__start-stop svg {
+  margin-left: 0px;
+}
