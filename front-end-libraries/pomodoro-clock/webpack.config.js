@@ -36,6 +36,19 @@ const config = {
                 ]
             },
             {
+                test: /\.wav$/,
+                use: [
+                    {
+                        loader:'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: './wav',
+                            publicPath: './wav'
+                        }
+                    }
+                ]
+            },
+            {
               test: /\.svg$/,
               use: 'svg-inline-loader?classPrefix'
             },
