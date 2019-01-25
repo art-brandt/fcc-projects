@@ -29,8 +29,6 @@ body {
   
 }
 
-
-
 .navbar__list {
   list-style: none;
   overflow-y: auto;
@@ -164,7 +162,7 @@ header {
       <a class="nav-link" href="#Function_declarations"><li>Function declarations</li></a>
       <a class="nav-link" href="#Reference"><li>Reference</li></a>
     </ul>
-    <button id="navbar__hideButton"></button>
+    <button id="navbar__hideButton">Hide Navbar</button>
   </nav>
   <main class="main" id="main-doc">
     <section class="main-section"
@@ -453,14 +451,15 @@ header {
     const navbar = document.querySelector('.navbar__list');
     const main = document.querySelector('#main-doc');
     hideNavbarButton.addEventListener('click', function(event){
-      console.log('click');
       navbarIsHide = !navbarIsHide;
       if (navbarIsHide) {
         navbar.classList.add('navbar__list--hide');
         main.classList.add('main--navbarishidden');
+        hideNavbarButton.innerHTML = "Show Navbar";
       } else {
         navbar.classList.remove('navbar__list--hide');
         main.classList.remove('main--navbarishidden');
+        hideNavbarButton.innerHTML = "Hide Navbar";
       }
     }); 
   </script>
