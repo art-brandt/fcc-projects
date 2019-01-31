@@ -17,13 +17,13 @@ class LengthController extends Component {
       <h2 className="length-controller__label" 
           id={`${this.props.id}-label`}>{ this.props.label }</h2>
       <div className="row">
-        <div className="length-contoller__button"
+        <button className="length-contoller__button"
              id={`${this.props.id}-increment`}
              dangerouslySetInnerHTML={{__html: svgInc}}
              onClick={ this.props.handleIncrement }/>
         <div className="length-contoller__value"
              id={`${this.props.id}-length`}>{ this.props.value }</div>
-        <div className="length-contoller__button"
+        <button className="length-contoller__button"
              id={`${this.props.id}-decrement`}
              dangerouslySetInnerHTML={{__html: svgDec}} 
              onClick={ this.props.handleDecrement } />

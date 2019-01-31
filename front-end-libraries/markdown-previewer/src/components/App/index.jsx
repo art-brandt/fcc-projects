@@ -90,20 +90,20 @@ export default class App extends Component {
         <div className="side" style={ styleSideMarkdown() }>
           <header>
             <h2>Editor (Markdown)</h2>
-            <div className="btnToFullScreen" 
+            <button className="btnToFullScreen" 
               onClick={ this.markdownDoFullScreen }
               dangerouslySetInnerHTML={ iconButton() }>
-            </div>
+            </button>
           </header>
           <textarea value={ this.state.markdown } id="editor" onChange={ this.handleHTML }></textarea >
         </div>
         <div className="side" style={ styleSideHtml() }>
           <header>
             <h2>Previewer (HTML)</h2>
-            <div className="btnToFullScreen" 
+            <button className="btnToFullScreen" 
               onClick={ this.htmlDoFullScreen }
               dangerouslySetInnerHTML={ iconButton() }>
-            </div>
+            </button>
           </header>
           <div id="preview" dangerouslySetInnerHTML={{ __html: this.state.html }} />
         </div>

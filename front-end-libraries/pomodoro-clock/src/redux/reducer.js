@@ -34,7 +34,11 @@ export default function appReducer(state = initialState, action) {
     case SESSION_INCREMENT:
       if (!timerIsStarted && state.sessionLength < limitLength) {
         newState.sessionLength = state.sessionLength + 1;
-        newState.timer = state.timer.replace(regExpMinutes, newState.sessionLength.toString());
+        if (newState.sessionLength >= 10) {
+          newState.timer = timer.replace(regExpMinutes, newState.sessionLength.toString());
+        } else {
+          newState.timer = timer.replace(regExpMinutes, '0' + newState.sessionLength.toString());
+        }
       }
       return newState;
     case SESSION_DECREMENT:

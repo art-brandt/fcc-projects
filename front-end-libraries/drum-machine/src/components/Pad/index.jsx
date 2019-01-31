@@ -35,10 +35,10 @@ export default class Pad extends Component {
 
   render() {
     return (
-      <div className={ this.state.class } onClick={ this.playClip } id={ this.props.clipName }>
+      <button className={ this.state.class } onClick={ this.playClip } id={ this.props.clipName }>
         <span>{ this.props.keyBoard }</span>
         <audio className="clip" src= { this.props.src } id = { this.props.keyBoard }></audio>
-      </div>
+      </button>
     );
   }
 }
