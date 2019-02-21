@@ -26,7 +26,7 @@ let prjsForBuild = fixtures.sections.map((section) => {
 prjsForBuild.forEach(project => {
   gulp.task('build:' + project.name, sh(`cd ${project.path} && npm run build`));
   gulp.task('heroku-postbuild:' + project.name, 
-    sh(`cd ${project.path} && npm install --only=dev && npm install && npm run build`
+    sh(`cd ${project.path} && npm install && npm run build`
   ));
 });
 
