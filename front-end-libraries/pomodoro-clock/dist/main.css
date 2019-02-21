@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 200px; }
+  width: 210px; }
 
 .length-controller .row {
   display: flex;
@@ -16,6 +16,10 @@
 
 .length-contoller__button {
   width: 35px;
+  height: 35px;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
   cursor: pointer; }
 
 .length-contoller__button svg path {
@@ -26,6 +30,7 @@
   fill: rgba(255, 255, 255, 0.4); }
 
 .length-contoller__value {
+  width: 30px;
   font-size: 2.2em;
   font-weight: bold;
   margin: 0px 12px; }

@@ -1,4 +1,4 @@
-const gulp = require("gulp");
+const gulp = require('gulp');
 const {sh} = require('sh-thunk');
 const fs = require('fs');
 const path = require('path');
@@ -37,6 +37,3 @@ gulp.task('build:all', gulp.series(
 gulp.task('heroku-postbuild:all', gulp.series(
   prjsForBuild.map(project => { return 'heroku-postbuild:'+ project.name })
 ));
-
-
-

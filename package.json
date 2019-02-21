@@ -5,13 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build-all-projects": "gulp build:all"
+    "build-all-projects": "gulp build:all",
+    "heroku-postbuild": "gulp heroku-postbuild:all"
   },
   "author": "",
   "dependencies": {
     "express": "^4.16.4",
     "gulp": "^4.0.0",
-    "sh-thunk": "^0.2.6"
+    "sh-thunk": "^0.3.0"
   },
   "engines": {
     "node": "10.15.0"
